@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodiak | Prospecção Digital - Home Office</title>
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0d0c0b 0%, #1a1612 50%, #12100d 100%);
+            --card-bg: rgba(26, 23, 19, 0.75);
+            --border-glow: rgba(184, 134, 60, 0.35);
+            --text-main: #F4EEE1;
+            --text-muted: #B8B0A2;
+            --gold: #B8863C;
+            --gold-light: #DFAB5E;
+            
+            /* Degradês para botões */
+            --grad-pink: linear-gradient(135deg, #d946ef 0%, #9333ea 100%);
+            --grad-pink-hover: linear-gradient(135deg, #e879f9 0%, #a855f7 100%);
+            
+            --grad-blue: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+            --grad-blue-hover: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.8;
+            padding: 40px 16px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 700px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(184, 134, 60, 0.2);
+        }
+
+        .brand {
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: 8px;
+            background: linear-gradient(to right, #B8863C, #F4EEE1, #B8863C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 35px 28px;
+            margin-bottom: 28px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            font-size: 20px;
+            color: var(--gold-light);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 5px;
+            height: 20px;
+            background: var(--grad-pink);
+            border-radius: 3px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--text-main);
+            font-size: 16px;
+            text-align: justify;
+            opacity: 0.95;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: 16px;
+            position: relative;
+            padding-left: 22px;
+            color: var(--text-main);
+        }
+
+        li::before {
+            content: "◆";
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+            font-size: 12px;
+            top: 2px;
+        }
+
+        /* Estilização da Tabela de Ganhos */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 12px 14px;
+            border-bottom: 1px solid rgba(184, 134, 60, 0.2);
+        }
+
+        th {
+            background-color: rgba(184, 134, 60, 0.15);
+            color: var(--gold-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 13px;
+        }
+
+        td {
+            color: var(--text-main);
+        }
+
+        tr:hover td {
+            background-color: rgba(184, 134, 60, 0.05);
+        }
+
+        .highlight-box {
+            background: rgba(184, 134, 60, 0.08);
+            border-left: 4px solid var(--gold);
+            border-radius: 0 10px 10px 0;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--gold-light);
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .cta-container {
+            text-align: center;
+            margin-top: 40px;
+            padding: 10px 0;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-instagram {
+            background: var(--grad-pink);
+            color: #ffffff;
+        }
+
+        .btn-instagram:hover {
+            background: var(--grad-pink-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(217, 70, 239, 0.4);
+        }
+
+        .btn-telegram {
+            background: var(--grad-blue);
+            color: #ffffff;
+        }
+
+        .btn-telegram:hover {
+            background: var(--grad-blue-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(2, 132, 199, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 45px;
+            color: var(--text-muted);
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <header>
+            <div class="brand">KODIAK</div>
+            <div class="tagline">Operação Global • Prospecção Digital (Home Office)</div>
+        </header>
+
+        <!-- PROPOSTA -->
+        <div class="card">
+            <h2>Proposta</h2>
+            <p>Essas são minhas palavras a você que está buscando um trabalho home office. Eu trabalho em um nicho dark, um nicho que hoje a gente não consegue emitir nota fiscal e em que a legislação é um pouco insegura e complicada. Trabalho com isso há 8 anos, e por isso mantenho uma assistência jurídica e contábil robusta para estar à frente de tudo. A parte mais importante desse processo é que <strong>eu assumo os riscos</strong>.</p>
+            <p>As tratativas com quem quer trabalhar precisam ser diretamente comigo e com a minha equipe, porque fazemos a contenção de risco. Os anúncios, a organização das fotos, vídeos e conteúdos também passam por nós, exatamente por uma questão de segurança jurídica. O recebimento dos pagamentos das profissionais para a nossa empresa é feito direto com a gente pelo mesmo motivo. A distribuição de pagamentos que eu faço para todos os envolvidos já é gerada de forma limpa, protegida e sem riscos para você.</p>
+            <p>Então, para você que busca um trabalho home office e se sente confortável atuando nesse mercado informal, eu tenho uma proposta na parte de <strong>Prospecção Digital</strong>, focada na captação de novos profissionais para a Kodiak (seja para atendimento ou agendamento).</p>
+            <p>Quem trabalha com prospecção digital não precisa cumprir expediente todo dia e não tem responsabilidade operacional diária. O seu trabalho é a construção de uma carteira de indicações.</p>
+        </div>
+
+        <!-- GANHOS -->
+        <div class="card">
+            <h2>Ganhos e Projeção</h2>
+            <ul>
+                <li><strong>Comissão Contínua:</strong> Você ganha em torno de <strong>4% de tudo o que for faturado</strong> pela profissional indicada. Se ela faturar cerca de R$ 600 por dia, isso te rende aproximadamente R$ 24 por dia.</li>
+                <li><strong>Incentivo de Entrada (Bônus Único):</strong> R$ 150,00 ao fechamento da primeira semana de cada indicada ativa. Juntando a comissão diária e o bônus, na primeira semana da sua indicada você fatura entre R$ 250,00 e R$ 270,00 por ela.</li>
+                <li><strong>Escala Mensal:</strong> Se você trouxer 1 menina, o ganho gira em torno de R$ 500/mês. Construindo uma carteira de 10 indicações ativas, a projeção chega a <strong>R$ 5.000 por mês</strong>, com pagamentos diários direto na sua conta.</li>
+            </ul>
+
+            <h3 style="font-size: 15px; color: var(--gold-light); margin: 20px 0 10px 0; text-transform: uppercase; letter-spacing: 1px;">Projeção de Ganhos da Prospecção Digital</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Indicados Ativos</th>
+                            <th>Bônus Único (1ª Semana)</th>
+                            <th>Comissão 4% / Dia</th>
+                            <th>Comissão / Mês (22 dias)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 profissional</td>
+                            <td>R$ 150,00</td>
+                            <td>R$ 24,00</td>
+                            <td>R$ 528,00</td>
+                        </tr>
+                        <tr>
+                            <td>5 profissionais</td>
+                            <td>R$ 750,00</td>
+                            <td>R$ 120,00</td>
+                            <td>R$ 2.640,00</td>
+                        </tr>
+                        <tr>
+                            <td><strong>10 profissionais</strong></td>
+                            <td><strong>R$ 1.500,00</strong></td>
+                            <td><strong>R$ 240,00</strong></td>
+                            <td><strong>R$ 5.280,00</strong></td>
+                        </tr>
+                        <tr>
+                            <td>15 profissionais</td>
+                            <td>R$ 2.250,00</td>
+                            <td>R$ 360,00</td>
+                            <td>R$ 7.920,00</td>
+                        </tr>
+                        <tr>
+                            <td>20 profissionais</td>
+                            <td>R$ 3.000,00</td>
+                            <td>R$ 480,00</td>
+                            <td>R$ 10.560,00</td>
+                        </tr>
+                        <tr>
+                            <td>25 profissionais</td>
+                            <td>R$ 3.750,00</td>
+                            <td>R$ 600,00</td>
+                            <td>R$ 13.200,00</td>
+                        </tr>
+                        <tr>
+                            <td>30 profissionais</td>
+                            <td>R$ 4.500,00</td>
+                            <td>R$ 720,00</td>
+                            <td>R$ 15.840,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="highlight-box">
+                <p>⚠️ O mercado está cheio de profissionais precisando de uma proposta séria. Como eu tenho a melhor estrutura do mercado, o seu trabalho de prospecção flui com facilidade. Atuamos a nível Brasil, com zero risco para você!</p>
+            </div>
+        </div>
+
+        <!-- SOBRE NÓS -->
+        <div class="card">
+            <h2>Sobre Nós</h2>
+            <p>O mercado de prestação de serviços independentes de acompanhamento e atendimento de alto padrão no Brasil é arcaico, desorganizado e vulnerável. Enquanto a grande maioria opera na informalidade total, sujeita a riscos desnecessários, baladas expostas ou casas de massagem engessadas, a <strong>Kodiak</strong> nasceu para profissionalizar e blindar a operação.</p>
+            <p>Nós não somos boate e não somos casa de massagem. Nós somos uma equipe especializada em <strong>atendimento delivery de elite</strong>.</p>
+            <p>Trabalhamos de forma cirúrgica, focada exclusivamente no formato digital e em campo, garantindo o modelo de trabalho mais seguro, discreto e rentável do Brasil. Operamos sob a fachada técnica e profissional de <strong>terapeutas ocupacionais e integrativas</strong>, cujas formações e portfólios de cursos existem, são documentados e servem para blindar a segurança jurídica e social de quem atua na área.</p>
+            <ul>
+                <li><strong>Estrutura Jurídica e Contábil:</strong> Retaguarda corporativa para operar com total transparência de dados e informações.</li>
+                <li><strong>8 Anos de Mercado:</strong> Know-how validado e referências sólidas no setor.</li>
+                <li><strong>Sigilo Absoluto (98%):</strong> Proteção máxima da identidade, privacidade e integridade de todos.</li>
+                <li><strong>Pagamento Diário:</strong> O que é gerado é liquidado e pago diariamente, sem acúmulo.</li>
+            </ul>
+        </div>
+
+        <!-- CONTATO / ANÁLISE DE PERFIL -->
+        <div class="card cta-container" style="background: transparent; border: none; box-shadow: none; padding: 0;">
+            <h2 style="justify-content: center; margin-bottom: 12px; color: var(--text-main);">Próximo Passo</h2>
+            <p style="text-align: center; margin-bottom: 25px; color: var(--text-muted);">Entre em contato para saber dos requisitos e fazermos sua análise de perfil diretamente com a equipe Kodiak.</p>
+            
+            <a href="https://www.instagram.com/kodiakdelivery/" target="_blank" class="btn btn-instagram">✨ Entrar em Contato no Instagram (Direct)</a>
+            <a href="https://t.me/41997446035" target="_blank" class="btn btn-telegram">💬 Falar via Telegram (41 99744-6035)</a>
+        </div>
+
+        <footer>
+            Kodiak • Operação Global &bull; Todos os direitos reservados
+        </footer>
+    </div>
+
+</body>
+</html>
